@@ -32,7 +32,7 @@ public class C_Pessoa {
                                @RequestParam("email") String email,
                                @RequestParam("senha") String senha,
                                @RequestParam("confSenha") String confSenha){
-        S_Pessoa.cadastrarPessoa(nome,cpf,email,telefone,senha);
+        S_Pessoa.cadastrarPessoa(nome,cpf,email,telefone,senha, confSenha);
         return "redirect:/";
     }
 
