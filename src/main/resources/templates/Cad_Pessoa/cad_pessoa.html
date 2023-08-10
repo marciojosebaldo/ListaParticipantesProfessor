@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,7 @@
 
 <body>
 <div class="container">
+    <div th:if="${mensagem}" th:utext="${mensagem}"></div>
     <h1 class="mt-5">Cadastro</h1>
     <form action="/cadastro" method="post">
         <div class="row">
