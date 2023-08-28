@@ -1,9 +1,12 @@
 package com.MundoSenaiTDSN.ListaParticipantes.Controller;
 
 import com.MundoSenaiTDSN.ListaParticipantes.Model.M_Resposta;
+import com.MundoSenaiTDSN.ListaParticipantes.Service.S_Login;
 import com.MundoSenaiTDSN.ListaParticipantes.Service.S_Pessoa;
+
+
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +22,14 @@ public class C_Pessoa {
 
     @PostMapping("/")
     public String loginPessoa(@RequestParam("usuario") String usuario,
-                              @RequestParam("senha") String senha){
-        return "Home/home";
+                              @RequestParam("senha") String senha,
+                              HttpSession session){
+        session.setAttribute("usuario", S_Login.validaLogin(usuario,senha));
+        if(session.getAttribute("usuario") != null) {
+            return "redirect:/Home";
+        }else{
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/cadastro")
