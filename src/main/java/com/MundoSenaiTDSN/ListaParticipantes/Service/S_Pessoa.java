@@ -51,7 +51,11 @@ public class S_Pessoa {
                 r_pessoa.save(m_pessoa);
                 mensagem += "Pessoa Cadastrada Com Sucesso";
             }catch (DataIntegrityViolationException e){
-                mensagem += e.getMessage()+"<br/>";
+                if (e.getMessage().contains("pessoa_cpf_key")) {
+                    mensagem += "O CPF informado já foi cadastrado";
+                } else {
+                    mensagem += e.getMessage();
+                }
                 podeSalvar = false;
             }
         }
