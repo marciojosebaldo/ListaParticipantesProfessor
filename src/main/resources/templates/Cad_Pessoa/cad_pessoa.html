@@ -120,7 +120,7 @@
 			    },
 			    success: function (data) {
 			        if(data.status == false) {
-			            alert(data.mensagem);
+			            $("#errorMessage").html(data.mensagem);
 			        } else {
 			            alert("Deu bom!");
 			        }
