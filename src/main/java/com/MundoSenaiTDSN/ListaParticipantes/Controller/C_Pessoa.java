@@ -3,8 +3,6 @@ package com.MundoSenaiTDSN.ListaParticipantes.Controller;
 import com.MundoSenaiTDSN.ListaParticipantes.Model.M_Resposta;
 import com.MundoSenaiTDSN.ListaParticipantes.Service.S_Login;
 import com.MundoSenaiTDSN.ListaParticipantes.Service.S_Pessoa;
-
-
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,12 +38,16 @@ public class C_Pessoa {
 
     @PostMapping("/cadastro")
     @ResponseBody
-    public String postCadastro(@RequestParam("nome") String nome,
-                               @RequestParam("cpf") String cpf,
-                               @RequestParam("telefone") String telefone,
-                               @RequestParam("email") String email,
-                               @RequestParam("senha") String senha,
-                               @RequestParam("confSenha") String confSenha){
-        return "Oi. Este é um novo retorno";
+    public M_Resposta postCadastro(@RequestParam("nome") String nome,
+                                   @RequestParam("cpf") String cpf,
+                                   @RequestParam("telefone") String telefone,
+                                   @RequestParam("email") String email,
+                                   @RequestParam("senha") String senha,
+                                   @RequestParam("confSenha") String confSenha,
+                                   RedirectAttributes redirectAttributes){
+
+        M_Resposta m_resposta = S_Pessoa.cadastrarPessoa(nome,cpf,email,telefone,senha,confSenha);
+
+        return m_resposta;
         }
 }

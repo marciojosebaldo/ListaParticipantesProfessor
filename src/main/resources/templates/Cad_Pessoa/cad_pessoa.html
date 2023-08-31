@@ -119,10 +119,14 @@
 					confSenha:confSenha
 			    },
 			    success: function (data) {
-			        alert("Deu bom!");
+			        if(data.status == false) {
+			            alert("Deu ruim!");
+			        } else {
+			            alert("Deu bom!");
+			        }
 			    },
 			    error: function () {
-			        alert("Deu Ruim!");
+			        alert("Falha na comunicação com o servidor!");
 			    }
 			});
 		}
