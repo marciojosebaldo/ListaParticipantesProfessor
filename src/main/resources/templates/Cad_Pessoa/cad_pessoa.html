@@ -6,134 +6,191 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
     <script src="js/validadorCPF.js"></script>
     <link rel="icon" href="icone.svg">
     <link rel="stylesheet" href="css/teste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Login</title>
 </head>
+
 <body>
+
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+    <div class="position-absolute" id="toast-place" style="top:0px; right:20px;"></div>
+</div>
+
 <div class="container">
+
     <div id="errorMessage" th:utext="${mensagem}"></div>
     <h1 class="mt-5">Cadastro</h1>
-<!--    <form action="/cadastro" method="post">-->
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="sp_nome"><i class="fa-solid fa-user"></i></span>
-                    <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome"
-                           aria-label="Nome" th:value="${nome}" aria-describedby="sp_nome">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="sp_cpf"><i class="fa-solid fa-id-card"></i></span>
-                    <input id="cpf" name="cpf" type="text" class="form-control" placeholder="CPF"
-                           aria-label="cpf" th:value="${cpf}" aria-describedby="sp_cpf">
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="sp_email"><i class="fa-solid fa-envelope"></i></span>
-                    <input id="email" name="email" type="text" class="form-control" placeholder="E-mail"
-                           aria-label="email" th:value="${email}" aria-describedby="sp_email">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="sp_telefone"><i class="fa-solid fa-phone"></i></span>
-                    <input id="telefone" name="telefone" type="text" class="form-control" placeholder="Telefone"
-                           aria-label="telefone" th:value="${telefone}" aria-describedby="sp_telefone">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="sp_senha"><i class="fa-solid fa-key"></i></span>
-                    <input id="senha" name="senha" type="password" class="form-control" placeholder="Senha"
-                           aria-label="senha" th:value="${senha}" aria-describedby="sp_senha">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="sp_confSenha"><i class="fa-solid fa-key"></i></span>
-                    <input id="confSenha" name="confSenha" type="password" class="form-control"
-                           placeholder="Confirme a Senha"
-                           aria-label="confSenha" aria-describedby="sp_confSenha">
-                </div>
-            </div>
-            <div class="col-sm-12 text-end">
-                <button id="btnEnviar" class="btn btn-primary">Cadastrar</button>
+    <!--    <form action="/cadastro" method="post">-->
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="sp_nome"><i class="fa-solid fa-user"></i></span>
+                <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome" aria-label="Nome"
+                       th:value="${nome}" aria-describedby="sp_nome">
             </div>
         </div>
-<!--    </form>-->
+        <div class="col-sm-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="sp_cpf"><i class="fa-solid fa-id-card"></i></span>
+                <input id="cpf" name="cpf" type="text" class="form-control" placeholder="CPF" aria-label="cpf"
+                       th:value="${cpf}" aria-describedby="sp_cpf">
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="sp_email"><i class="fa-solid fa-envelope"></i></span>
+                <input id="email" name="email" type="text" class="form-control" placeholder="E-mail"
+                       aria-label="email" th:value="${email}" aria-describedby="sp_email">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="sp_telefone"><i class="fa-solid fa-phone"></i></span>
+                <input id="telefone" name="telefone" type="text" class="form-control" placeholder="Telefone"
+                       aria-label="telefone" th:value="${telefone}" aria-describedby="sp_telefone">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="sp_senha"><i class="fa-solid fa-key"></i></span>
+                <input id="senha" name="senha" type="password" class="form-control" placeholder="Senha"
+                       aria-label="senha" th:value="${senha}" aria-describedby="sp_senha">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="sp_confSenha"><i class="fa-solid fa-key"></i></span>
+                <input id="confSenha" name="confSenha" type="password" class="form-control"
+                       placeholder="Confirme a Senha" aria-label="confSenha" aria-describedby="sp_confSenha">
+            </div>
+        </div>
+        <div class="col-sm-12 text-end">
+            <button id="btnEnviar" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </div>
+    <!--    </form>-->
 </div>
 
 <script type="text/javascript">
 
-	function campoVazio(campo){
-		if(campo == ''){
-			return true;
-		}else{
-			return false;
-		}
-	}
+    $("#btnEnviar").click(validaEnvio);
 
-	function validaEnvio(){
-		let podeEnviar = true;
-		let cpf = $("#cpf").val();
-		let nome = $("#nome").val();
-		let email = $("#email").val();
-		let telefone = $("#telefone").val();
-		let senha = $("#senha").val();
-		let confSenha = $("#confSenha").val();
+    function campoVazio(campo) {
+        if (campo == '') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-		$("#errorMessage").text("");
-		if(!validarCPF(cpf)){
-			podeEnviar = false;
-			$("#errorMessage").append('CPF Inválido!');
-		}
-		if(campoVazio(nome)){
-			podeEnviar = false;
-			$("#errorMessage").append('O nome precisa ser preenchido!');
-		}
-		if(campoVazio(email) && campoVazio(telefone)){
-			podeEnviar = false;
-			$("#errorMessage").append('O e-Mail ou telefone precisa ser preenchido!');
-		}
-		if(campoVazio(senha) || senha != confSenha){
-			podeEnviar = false;
-			$("#errorMessage").append('A senha precisa ser preenchida e igual a confirmação de senha!');
-		}
-		if(podeEnviar){
-			$.ajax({
-			    type: "POST",// Tipo da requisição
-			    url: "/cadastro", // Caminho para envio da requisição
-			    data: {
-			        cpf:cpf,
-					nome:nome,
-					email:email,
-					telefone:telefone,
-					senha:senha,
-					confSenha:confSenha
-			    },
-			    success: function (data) {
-			        if(data.status == false) {
-			            $("#errorMessage").html(data.mensagem);
-			        } else {
-			            alert("Deu bom!");
-			        }
-			    },
-			    error: function () {
-			        alert("Falha na comunicação com o servidor!");
-			    }
-			});
-		}
-	}
+    function createToastArea() {
+        if ($(".toaster").length == 0) {
+            $("body").prepend('' +
+                '<div aria-live="polite" aria-atomic="true"' +
+                'class="position-absolute top-0 erros">' +
+                '<div class="toaster position-absolute top-0 end-0">' +
+                '</div>' +
+                '</div>');
+        }
 
-	$("#btnEnviar").click(validaEnvio);
+    }
+
+    function showToast(alerta) {
+        createToastArea();
+
+        let tipo
+        if (alerta.sucesso) {
+            tipo = 'bg-success';
+        } else {
+            tipo = 'bg-danger';
+        }
+
+        const toastElement = $('<div class="mt-1 toast align-items-center' + tipo + 'text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">' +
+            '<div class="d-flex">' +
+            '<div class="toast-body">' +
+            alerta.mensagem +
+            '</div>' +
+            '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>' +
+            '</div>' +
+            '</div>');
+
+        toastElement.on('hidden.bs.toast', function () {
+            $(this).remove();
+        });
+
+        $(".toaster").append(toastElement);
+        const newToast = new bootstrap.Toast(toastElement);
+        newToastshow();
+    }
+
+    function validaEnvio() {
+        let podeEnviar = true;
+        let cpf = $("#cpf").val();
+        let nome = $("#nome").val();
+        let email = $("#email").val();
+        let telefone = $("#telefone").val();
+        let senha = $("#senha").val();
+        let confSenha = $("#confSenha").val();
+
+        $("#errorMessage").text("");
+        if (!validarCPF(cpf)) {
+            podeEnviar = false;
+            showToast({ sucesso: podeEnviar, mensagem: "O CPF informado é inválido!" });
+            $(".gCpf").addClass("error-field");
+        }
+        if (campoVazio(nome)) {
+            podeEnviar = false;
+            showToast({ sucesso: podeEnviar, mensagem: "O nome precisa ser preenchido!" });
+            $(".gNome").addClass("error-field");
+        }
+        if (campoVazio(email) && campoVazio(telefone)) {
+            podeEnviar = false;
+            showToast({ sucesso: podeEnviar, mensagem: "E-mail ou telefone precisa ser informado" });
+            $(".gTelefone").addClass("error-field");
+            $(".gEmail").addClass("error-field");
+        }
+        if (campoVazio(senha) || senha != confSenha) {
+            podeEnviar = false;
+            showToast({ sucesso: podeEnviar, mensagem: "A senha precisa ser informada e igual à confirmação de senha" });
+            $(".gSenha").addClass("error-field");
+            ("#errorMessage").append('A senha precisa ser preenchida e igual a confirmação de senha!');
+        }
+        if (podeEnviar) {
+            $.ajax({
+                type: "POST",// Tipo da requisição
+                url: "/cadastro", // Caminho para envio da requisição
+                data: {
+                    cpf: cpf,
+                    nome: nome,
+                    email: email,
+                    telefone: telefone,
+                    senha: senha,
+                    confSenha: confSenha
+                },
+                success: function (data) {
+                    $("#errorMessage").text("");
+                    if (data.sucesso) {
+                        window.location.href = "/";
+                    } else {
+                        showToast(data);
+                    }
+                },
+                error: function () {
+                    $('#errorMessage').append("Falha na comunicação com o servidor!");
+                }
+            });
+        }
+    }
 </script>
 </body>
-
 </html>
