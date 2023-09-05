@@ -177,7 +177,7 @@
             podeEnviar = false;
             showToast({ sucesso: podeEnviar, mensagem: "A senha precisa ser informada e igual à confirmação de senha" });
             $(".tSenha").addClass("error-field");
-            ("#errorMessage").append('A senha precisa ser preenchida e igual a confirmação de senha!');
+            $("#errorMessage").append('A senha precisa ser preenchida e igual a confirmação de senha!');
         }
         if (podeEnviar) {
             $.ajax({
