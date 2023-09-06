@@ -22,30 +22,30 @@
     <title>Login</title>
 </head>
 <body>
+
 <div class="container">
     <div th:if="${mensagem}" th:utext="${mensagem}"></div>
     <h1 class="text-center mt-5">Mundo Senai</h1>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-            <input id="usuario" name="usuario" type="text" class="form-control" placeholder="Username"
-                   aria-label="Username"
-                   aria-describedby="basic-addon1">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+        <input id="usuario" name="usuario" type="text" class="form-control" placeholder="Username"
+               aria-label="Username"
+               aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="sp_senha"><i class="fa-solid fa-key"></i></span>
+        <input id="senha" name="senha" type="password" class="form-control" placeholder="Senha" aria-label="senha"
+               aria-describedby="senha">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <input value="Login" type="submit" class="btn btn-primary"/>
         </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="sp_senha"><i class="fa-solid fa-key"></i></span>
-            <input id="senha" name="senha" type="password" class="form-control" placeholder="Senha" aria-label="senha"
-                   aria-describedby="senha">
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-success" href="/cadastro">Cadastre-se</a>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <input value="Login" type="submit" class="btn btn-primary"/>
-            </div>
-            <div class="col-sm-6 text-end">
-                <a class="btn btn-success" href="/cadastro">Cadastre-se</a>
-            </div>
-        </div>
-
+    </div>
 </div>
 </body>
 </html>
