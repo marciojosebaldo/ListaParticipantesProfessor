@@ -1,5 +1,3 @@
-$("#btnEnviar").click(validaEnvio);
-
     function campoVazio(campo) {
         if (campo == '') {
             return true;
