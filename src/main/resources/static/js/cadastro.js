@@ -21,7 +21,7 @@
     function showToast(alerta) {
         createToastArea();
 
-        let tipo
+        let tipo;
         if (alerta.sucesso) {
             tipo = 'bg-success';
         } else {
